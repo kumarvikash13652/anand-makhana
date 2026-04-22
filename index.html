@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7KE84LF36"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q7KE84LF36');
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', 
+                includedLanguages: 'en,hi,ta,ml,kn,es,ru,zh-CN,ar,ja',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+        
+        function changeLanguage(lang) {
+            var selectField = document.querySelector(".goog-te-combo");
+            if (selectField) {
+                selectField.value = lang;
+                selectField.dispatchEvent(new Event('change'));
+            }
+        }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lovely Bites | Authentic Bihar Products</title>
     <style>
         :root {
-            --primary: #00008B; /* Dark Blue */
-            --accent: #FFD700; /* Yellow */
-            --bg: #FFFFFF;
-            --text: #00008B;
-            --blog-bg: #eef7fa; /* Light Blue background for blog */
+            --primary: #2d5a27;
+            --accent: #d4a017;
+            --bg: #fffcf5;
+            --text: #2d2926;
+            --blog-bg: #f2ede4;
         }
         * { box-sizing: border-box; } 
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
         
-        /* Header Fix */
+        /* Language Bar Styles */
+        .lang-bar { background: #f0f0f0; padding: 10px 15px; text-align: center; font-size: 0.9rem; border-bottom: 1px solid #ddd; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .lang-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 4px 8px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        .lang-btn:hover { background: var(--primary); color: white; }
+        
+        /* Hide default Google Translate banner */
+        .goog-te-banner-frame.skiptranslate { display: none !important; } 
+        body { top: 0 !important; }
+        #google_translate_element { display: inline-block; }
+
         header { background: var(--primary); color: white; padding: 1.5rem; text-align: center; position: relative; }
         footer { background: var(--primary); color: white; padding: 1.5rem; text-align: center; }
         
         .yellow { color: var(--accent); }
-        
-        /* GSTIN Styling */
-        .gstin-top-right {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-align: right;
-        }
-        
-        /* Logo Styling */
+        .gstin-top-right { position: absolute; top: 10px; right: 15px; color: var(--accent); font-size: 0.85rem; font-weight: bold; text-align: right; }
         .logo { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
         .logo img { max-height: 80px; max-width: 90%; }
-        
-        /* Hero Banner */
-        .hero { position: relative; height: 200px; background: #0293dc; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 20px; text-align: center; padding: 10px; }
-        
-        /* Product Grid Fix */
+        .hero { position: relative; height: 200px; background: #8e9e62; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 20px; text-align: center; padding: 10px; color: white; }
         .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 15px; max-width: 1200px; margin: auto; }
-        .product-card { border: 2px solid var(--primary); padding: 15px; text-align: center; border-radius: 8px; }
-        
-        /* Fixed Image Logic */
-        .product-card img { 
-            width: 240px; 
-            max-width: 100%; 
-            height: 240px; 
-            object-fit: cover; 
-            margin-bottom: 10px; 
-        }
-
-        /* NEW: Blog Carousel Styling */
+        .product-card { border: 2px solid var(--primary); padding: 15px; text-align: center; border-radius: 8px; background: #ffffff; }
+        .product-card img { width: 240px; max-width: 100%; height: 240px; object-fit: cover; margin-bottom: 10px; }
         .blog-section { padding: 40px 20px; background: var(--blog-bg); margin-top: 30px; }
-        .blog-container { 
-            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
-            max-width: 1200px; margin: auto; scroll-snap-type: x mandatory; 
-        }
-        .blog-tile { 
-            min-width: 280px; height: 280px; background: #fff; 
-            border: 2px solid var(--primary); border-radius: 12px; padding: 20px;
-            scroll-snap-align: start; text-align: center; display: flex; flex-direction: column; justify-content: center;
-        }
+        .blog-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; max-width: 1200px; margin: auto; scroll-snap-type: x mandatory; }
+        .blog-tile { min-width: 280px; height: 280px; background: #fff; border: 2px solid var(--primary); border-radius: 12px; padding: 20px; scroll-snap-align: start; text-align: center; display: flex; flex-direction: column; justify-content: center; }
         .blog-tile h4 { margin-top: 0; color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 5px; }
         .blog-tile p { font-size: 0.9rem; line-height: 1.4; color: #333; }
         
@@ -74,13 +77,20 @@
         }
         
         .btn { display: block; margin: 5px 0; padding: 8px; background: var(--primary); color: white; text-decoration: none; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
-        .btn:hover { background: var(--accent); color: var(--primary); }
-        
+        .btn:hover { background: var(--accent); color: white; }
         .make-in-bharat { text-align: center; padding: 20px; background: #f9f9f9; }
         .marketplace { font-size: 1.1rem; margin-top: 10px; }
     </style>
 </head>
 <body>
+
+<div class="lang-bar">
+    <span>Language:</span>
+    <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+    <button class="lang-btn" onclick="changeLanguage('ta')">தமிழ்</button>
+    <button class="lang-btn" onclick="changeLanguage('es')">Español</button>
+    <span>Other:</span> <div id="google_translate_element"></div>
+</div>
 
 <header>
     <div class="gstin-top-right">K L ENTERPRISE <br> GSTIN: 10JQBPK5246N1ZO</div>
