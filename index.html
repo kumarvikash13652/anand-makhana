@@ -18,12 +18,15 @@
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
-        
+
         function changeLanguage(lang) {
-            var selectField = document.querySelector(".goog-te-combo");
+            var selectField = document.querySelector("select.goog-te-combo");
             if (selectField) {
                 selectField.value = lang;
                 selectField.dispatchEvent(new Event('change'));
+            } else {
+                console.log("Dropdown not found, retrying...");
+                setTimeout(function() { changeLanguage(lang); }, 500);
             }
         }
     </script>
@@ -42,19 +45,18 @@
         * { box-sizing: border-box; } 
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
         
-        /* Language Bar Styles */
-        .lang-bar { background: #f0f0f0; padding: 10px 15px; text-align: center; font-size: 0.9rem; border-bottom: 1px solid #ddd; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .lang-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 4px 8px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        /* Language Bar */
+        .lang-bar { background: #f0f0f0; padding: 10px; text-align: center; font-size: 0.9rem; border-bottom: 1px solid #ddd; }
+        .lang-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 5px 10px; cursor: pointer; font-weight: bold; border-radius: 4px; margin: 0 5px; }
         .lang-btn:hover { background: var(--primary); color: white; }
+        #google_translate_element { display: inline-block; vertical-align: middle; }
         
-        /* Hide default Google Translate banner */
-        .goog-te-banner-frame.skiptranslate { display: none !important; } 
+        /* Hide translate banner */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0 !important; }
-        #google_translate_element { display: inline-block; }
 
         header { background: var(--primary); color: white; padding: 1.5rem; text-align: center; position: relative; }
         footer { background: var(--primary); color: white; padding: 1.5rem; text-align: center; }
-        
         .yellow { color: var(--accent); }
         .gstin-top-right { position: absolute; top: 10px; right: 15px; color: var(--accent); font-size: 0.85rem; font-weight: bold; text-align: right; }
         .logo { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
@@ -85,11 +87,10 @@
 <body>
 
 <div class="lang-bar">
-    <span>Language:</span>
-    <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+    <button class="lang-btn" onclick="location.reload()">English</button>
     <button class="lang-btn" onclick="changeLanguage('ta')">தமிழ்</button>
     <button class="lang-btn" onclick="changeLanguage('es')">Español</button>
-    <span>Other:</span> <div id="google_translate_element"></div>
+    <div id="google_translate_element"></div>
 </div>
 
 <header>
